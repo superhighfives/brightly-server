@@ -1,27 +1,33 @@
 class TwitterSearch
 
-  SEARCH_RETRY_ATTEMPTS = 0
+  SEARCH_RETRY_ATTEMPTS = 3
 
-  def getTweets()
-    log "Searching twitter..."
+  def initialize(twitter_client)
+    @client = twitter_client
+  end
+
+  def get
+    log "Searching Twitter..."
     attempts = 1
+    options = {include_rts: true, exclude_replies: true, include_entities: true}
     begin
-      Twitter.user_timeline("wearebrightly").collect { |tweet| tweet.attrs }
-    rescue Twitter::Error::ClientError => e
+      log "Success!"
+      @client.user_timeline("wearebrightly", options)
+    rescue Twitter::Error => e
       log "Twitter returned an error: #{e.inspect}"
       if attempts <= SEARCH_RETRY_ATTEMPTS
         puts "Attempt #{attempts}. Retrying..."
         attempts += 1
         retry
       else
-        puts "#{attempts} failed attempts. Giving up on tweet search."
+        puts "#{attempts} failed attempts. Giving up on Twitter search."
         []
       end
     end
   end
 
   def log(m)
-    puts "[TwitterSearcher] #{m}"
+    puts "[TwitterSearch] #{m}"
   end
 
 end

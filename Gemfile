@@ -10,6 +10,9 @@ gem 'json'
 gem 'newrelic_rpm'
 
 gem 'twitter'
+gem 'twitter-text'
+gem 'tumblr_client'
+gem 'songkickr'
 
 group :development do
   gem 'heroku'
