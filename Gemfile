@@ -13,6 +13,7 @@ gem 'twitter'
 gem 'twitter-text'
 gem 'tumblr_client'
 gem 'songkickr'
+gem 'soundcloud'
 
 group :development do
   gem 'heroku'

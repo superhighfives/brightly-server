@@ -2,13 +2,16 @@ class SongkickSearch
 
   SEARCH_RETRY_ATTEMPTS = 3
 
+  def initialize(songkick_client)
+    @client = songkick_client
+  end
+
   def get
     log "Searching Songkick..."
     attempts = 1
-    songkick = Songkickr::Remote.new ENV['SONGKICK_KEY']
     begin
       log "Success!"
-      songkick.events(artist_name: 'Brightly').results
+      @client.events(artist_name: 'Brightly').results
     rescue
       log "Songkick returned an error"
       if attempts <= SEARCH_RETRY_ATTEMPTS

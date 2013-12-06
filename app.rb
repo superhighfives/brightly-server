@@ -9,11 +9,13 @@ require 'twitter'
 require 'twitter-text'
 require 'tumblr_client'
 require 'songkickr'
+require 'soundcloud'
 
 #libraries
 require_relative './lib/twitter_search'
 require_relative './lib/tumblr_search'
 require_relative './lib/songkick_search'
+require_relative './lib/soundcloud_search'
 require_relative './lib/cache'
 
 require_relative './lib/config'
@@ -37,6 +39,9 @@ helpers do
   end
   def songkick_search
     settings.songkick_search
+  end
+  def soundcloud_search
+    settings.soundcloud_search
   end
 end
 
@@ -64,13 +69,20 @@ get '/posts.json' do
   jsonp posts
 end
 
+get '/tracks.json' do
+  content_type :json
+  tracks = cache.get('tracks')
+  jsonp tracks
+end
+
 get '/feeds.json' do
   content_type :json
   
   tweets = cache.get('tweets')
   posts = cache.get('posts')
+  tracks = cache.get('tracks')
   
-  feeds = tweets + posts
+  feeds = tweets + posts + tracks
 
   sorted_feeds = feeds.sort_by{ |item| item[:created_at] }.reverse
   jsonp sorted_feeds

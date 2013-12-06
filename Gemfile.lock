@@ -19,6 +19,7 @@ GEM
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
+    hashie (2.0.5)
     heroku (3.1.0)
       heroku-api (~> 0.3.7)
       launchy (>= 0.3.2)
@@ -27,6 +28,9 @@ GEM
       rubyzip
     heroku-api (0.3.15)
       excon (~> 0.25.1)
+    httmultiparty (0.3.10)
+      httparty (>= 0.7.3)
+      multipart-post
     http (0.5.0)
       http_parser.rb
     http_parser.rb (0.5.3)
@@ -71,6 +75,9 @@ GEM
       sinatra (~> 1.0)
     songkickr (0.4.1)
       httparty (~> 0.8.3)
+    soundcloud (0.3.2)
+      hashie (~> 2.0)
+      httmultiparty (~> 0.3.0)
     thin (1.6.1)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -117,6 +124,7 @@ DEPENDENCIES
   sinatra-cross_origin
   sinatra-jsonp
   songkickr
+  soundcloud
   thin
   tumblr_client
   twitter
