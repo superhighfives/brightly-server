@@ -15,7 +15,8 @@ data = snaps.collect {|snap|
     src: src,
     caption: snap.caption.text,
     likes: snap.likes["count"],
-    created_at: Time.at(snap.created_time.to_i).utc.to_datetime
+    created_at: Time.at(snap.created_time.to_i).utc.to_datetime,
+    uri: snap.link
   }
 }
 

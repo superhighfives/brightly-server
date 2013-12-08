@@ -35,11 +35,13 @@ data = posts.collect {|post|
       {
         width: photo["original_size"]["width"],
         height: photo["original_size"]["height"],
+        src: photo["alt_sizes"][-4]["url"],
         url: photo["original_size"]["url"]
       }
     end
     {
-      photos: photos
+      photos: photos,
+      caption: post["caption"]
     }
   when "text"
     {
