@@ -11,7 +11,7 @@ class TumblrSearch
     attempts = 1
     begin
       log "Success!"
-      data = @client.posts("wearebrightly.tumblr.com")
+      data = @client.posts("dummydummydummydummydummy.tumblr.com")
       data["posts"]
     rescue
       log "Tumblr returned an error"
