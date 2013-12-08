@@ -14,6 +14,7 @@ gem 'twitter-text'
 gem 'tumblr_client'
 gem 'songkickr'
 gem 'soundcloud'
+gem 'instagram'
 
 group :development do
   gem 'heroku'

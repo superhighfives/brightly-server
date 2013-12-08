@@ -10,12 +10,14 @@ require 'twitter-text'
 require 'tumblr_client'
 require 'songkickr'
 require 'soundcloud'
+require 'instagram'
 
 #libraries
 require_relative './lib/twitter_search'
 require_relative './lib/tumblr_search'
 require_relative './lib/songkick_search'
 require_relative './lib/soundcloud_search'
+require_relative './lib/instagram_search'
 require_relative './lib/cache'
 
 require_relative './lib/config'
@@ -42,6 +44,9 @@ helpers do
   end
   def soundcloud_search
     settings.soundcloud_search
+  end
+  def instagram_search
+    settings.instagram_search
   end
 end
 
@@ -75,14 +80,21 @@ get '/tracks.json' do
   jsonp tracks
 end
 
+get '/snaps.json' do
+  content_type :json
+  snaps = cache.get('snaps')
+  jsonp snaps
+end
+
 get '/feeds.json' do
   content_type :json
   
   tweets = cache.get('tweets')
   posts = cache.get('posts')
   tracks = cache.get('tracks')
+  snaps = cache.get('snaps')
   
-  feeds = tweets + posts + tracks
+  feeds = tweets + posts + tracks + snaps
 
   sorted_feeds = feeds.sort_by{ |item| item[:created_at] }.reverse
   jsonp sorted_feeds

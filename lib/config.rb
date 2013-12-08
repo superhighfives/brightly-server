@@ -19,6 +19,12 @@ set :soundcloud_search, SoundcloudSearch.new(
                    client_secret: ENV['SOUNDCLOUD_CLIENT_SECRET'])
 )
 
+set :instagram_search, InstagramSearch.new(
+  ::Instagram::Client.new(client_id: ENV['INSTAGRAM_CLIENT_ID'],
+                   client_secret: ENV['INSTAGRAM_CLIENT_SECRET'],
+                   access_token: ENV['INSTAGRAM_ACCESS_TOKEN'])
+)
+
 set :cache, Cache.new(
   ::Dalli::Client.new(ENV['MEMCACHIER_SERVERS'].split(','),
                       username: ENV['MEMCACHIER_USERNAME'],
