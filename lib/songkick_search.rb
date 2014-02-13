@@ -8,6 +8,7 @@ class SongkickSearch
 
   def get
     log "Searching Songkick..."
+    options = {limit: 5}
     attempts = 1
     begin
       log "Success!"

@@ -16,6 +16,7 @@ data = gigs.collect {|gig|
     service: "songkick",
     uri: gig.uri,
     created_at: gig.start,
+    date: gig.start,
     city: {
       name: gig.location.city,
       latitude: gig.location.lng,

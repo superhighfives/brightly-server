@@ -8,6 +8,7 @@ class InstagramSearch
 
   def get
     log "Searching Instagram..."
+    options = {limit: 5}
     attempts = 1
     begin
       log "Success!"

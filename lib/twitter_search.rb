@@ -9,7 +9,7 @@ class TwitterSearch
   def get
     log "Searching Twitter..."
     attempts = 1
-    options = {include_rts: true, exclude_replies: true, include_entities: true}
+    options = {limit: 5, include_rts: true, exclude_replies: true, include_entities: true}
     begin
       log "Success!"
       @client.user_timeline("wearebrightly", options)
