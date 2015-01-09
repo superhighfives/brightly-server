@@ -91,13 +91,13 @@ get '/feeds.json' do
   
   # posts = cache.get('posts')
   # tracks = cache.get('tracks')
-  tweets = cache.get('tweets')
+  # tweets = cache.get('tweets')
   snaps = cache.get('snaps')
   
   # feeds = tweets + posts + tracks + snaps
-  feeds = tweets + snaps
+  feeds = snaps
 
-  # sorted_feeds = feeds.sort_by{ |item| item[:created_at] }.reverse
-  sorted_feeds = feeds.shuffle
+  sorted_feeds = feeds.sort_by{ |item| item[:created_at] }.reverse
+  # sorted_feeds = feeds.shuffle
   jsonp sorted_feeds
 end
