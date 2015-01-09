@@ -52,7 +52,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (1.2.0)
     netrc (0.7.7)
-    newrelic_rpm (3.6.9.171)
+    newrelic_rpm (3.9.9.275)
     oauth (0.4.7)
     rack (1.5.2)
     rack-protection (1.5.1)
